@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inicio - 7MA TV</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <!--barra de navegacion-->
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
+      <span>7MA TV</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
+        <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ <!--contenido -->
+<section class="container text-center pt-5 mt-5">
+  
+  <h2 class="text-gradient">Bienvenidos a 7MA TV</h2>
+  <p class="lead">Un canal local que informa, entretiene y educa. Transmitiendo en vivo en la señal 54 y 106.9 FM.</p>
+  <p class="lead">¡No te pierdas el estreno esta noche!</p>
+  <a href="Programacion.html" class="btn btn-purple mt-3">Ver Programación</a>
+</section>
+  <div id="carouselHero" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <img src="img/reeeee.png" class="d-block w-100 h-100 object-fit-cover opacity-50 position-absolute top-0 start-0" alt="Slide 1">
+        <div class="container carousel-caption text-start">
+          <span class="badge bg-primary bg-gradient px-3 py-2 mb-3">Inteligencia Artificial</span>
+          <h1 class="display-4 fw-bold text-white">Revolución en IA: GPT-5 Cambia el Futuro</h1>
+          <p class="lead text-light">OpenAI presenta su modelo más avanzado con capacidades nunca antes vistas.</p>
+          <div class="d-flex gap-3 mt-4">
+            <a href="Noticias.html" class="btn btn-purple btn-lg px-4 rounded-pill">Leer Artículo Completo</a>
+            <a href="EnVivo.html" class="btn btn-outline-light btn-lg px-4 rounded-pill"><i class="bi bi-play-circle"></i> Ver Video</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <img src="img/tecnologicas.jpg" class="d-block w-100 h-100 object-fit-cover opacity-50 position-absolute top-0 start-0" alt="Slide 2">
+        <div class="container carousel-caption text-start">
+          <span class="badge bg-warning text-dark px-3 py-2 mb-3">En Vivo</span>
+          <h1 class="display-4 fw-bold text-white">Desde el Estudio de 7MA TV</h1>
+          <p class="lead text-light">Sigue nuestra señal digital en tiempo real desde cualquier dispositivo.</p>
+          <a href="EnVivo.html" class="btn btn-light btn-lg px-4 rounded-pill">Ver En Vivo</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="img/teggg.jpg" class="d-block w-100 h-100 object-fit-cover opacity-50 position-absolute top-0 start-0" alt="Slide 2">
+        <div class="container carousel-caption text-start">
+          <span class="badge bg-warning text-dark px-3 py-2 mb-3">En Vivo</span>
+          <h1 class="display-4 fw-bold text-white">Ciencia y tegnologia</h1>
+          <p class="lead text-light">Sigue nuestra señal digital en tiempo real desde cualquier dispositivo.</p>
+          <a href="EnVivo.html" class="btn btn-light btn-lg px-4 rounded-pill">Ver En Vivo</a>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHero" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHero" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+
+ <!-- Seccion de noticias  -->
+<section class="noticias-section">
+  <div class="container">
+    <h2>Últimas <span style="color: #00c3ff;">Noticias</span></h2>
+    <p>Mantente al día con los avances más revolucionarios en tecnología, ciencia e innovación</p>
+
+    <!-- Filtros -->
+    <div class="filter-tags">
+      <button class="btn btn-outline-light">Todas</button>
+      <button class="btn btn-outline-info">IA</button>
+      <button class="btn btn-outline-info">Startups</button>
+      <button class="btn btn-outline-info">Gadgets</button>
+      <button class="btn btn-outline-info">Ciencia</button>
+      <button class="btn btn-outline-info">Transporte</button>
+    </div>
+    <!-- Noticias -->
+    <div class="row g-4">
+  <!-- Noticia 1 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/ia-cerebro.webp" class="card-img-top" alt="Noticia 1">
+      <div class="card-body">
+        <h5 class="card-title">GPT-5 Cambia la IA</h5>
+        <p class="card-text">OpenAI lanza su modelo más avanzado con capacidades nunca antes vistas.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noticia 2 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/images.jpg" class="card-img-top" alt="Noticia 2">
+      <div class="card-body">
+        <h5 class="card-title">Apple Vision Pro 2</h5>
+        <p class="card-text">Nuevas especificaciones para cambiar la realidad mixta.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noticia 3 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/quantum_internet.jpeg" class="card-img-top" alt="Noticia 3">
+      <div class="card-body">
+        <h5 class="card-title">Quantum Internet</h5>
+        <p class="card-text">Conexiones cuánticas más seguras entre continentes.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noticia 4 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/hyperloop.jpg" class="card-img-top" alt="Noticia 4">
+      <div class="card-body">
+        <h5 class="card-title">Hyperloop Comercial</h5>
+        <p class="card-text">La startup lanzará su primera línea a 1000 km/h.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noticia 5 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/iaaa.png" class="card-img-top" alt="Noticia 5">
+      <div class="card-body">
+        <h5 class="card-title">IA Multimodal</h5>
+        <p class="card-text">Meta presenta su nuevo asistente inteligente para múltiples sentidos.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noticia 6 -->
+  <div class="col-md-4">
+    <div class="cards cards-noticia h-100">
+      <img src="img/ia-cerebro.webp" class="card-img-top" alt="Noticia 6">
+      <div class="card-body">
+        <h5 class="card-title">Control Mental</h5>
+        <p class="card-text">Un chip logra que pacientes usen smartphones con la mente.</p>
+        <a href="#" class="btn">Leer más →</a>
+      </div>
+    </div>
+  </div>
+
+    <!-- Botón Cargar Más -->
+    <div class="text-center">
+      <button class="load-more-btn mt-5">Cargar Más Noticias</button>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------ -->
+<section class="top-innovaciones py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold"><span class="text-warning">🏆 Top Innovaciones del Mes</span></h2>
+      <p class="text-light">Las tecnologías más revolucionarias que están cambiando el mundo ahora mismo</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Ranking izquierdo -->
+      <div class="col-md-5">
+        <div class="list-group list-group-flush">
+
+          <div class="list-group-item bg-dark text-light d-flex align-items-center rounded mb-3">
+            <div class="badge bg-pink rounded-pill me-3">#1</div>
+            <div>
+              <h6 class="mb-0 fw-bold">ChatGPT-5 con Razonamiento Avanzado</h6>
+              <small>OpenAI &nbsp; <span class="text-success">↗ +340%</span> &nbsp; <i class="bi bi-people"></i> 15,420 votos</small>
+            </div>
+          </div>
+
+          <div class="list-group-item bg-dark text-light d-flex align-items-center rounded mb-3">
+            <div class="badge bg-info rounded-pill me-3">#2</div>
+            <div>
+              <h6 class="mb-0 fw-bold">Computadora Cuántica de 1000 Qubits</h6>
+              <small>IBM &nbsp; <span class="text-success">↗ +280%</span> &nbsp; 12,890 votos</small>
+            </div>
+          </div>
+
+          <div class="list-group-item bg-dark text-light d-flex align-items-center rounded mb-3">
+            <div class="badge bg-success rounded-pill me-3">#3</div>
+            <div>
+              <h6 class="mb-0 fw-bold">Batería de Estado Sólido 10 Minutos</h6>
+              <small>QuantumScape &nbsp; <span class="text-success">↗ +220%</span> &nbsp; 11,250 votos</small>
+            </div>
+          </div>
+
+          <div class="list-group-item bg-dark text-light d-flex align-items-center rounded mb-3">
+            <div class="badge bg-danger rounded-pill me-3">#4</div>
+            <div>
+              <h6 class="mb-0 fw-bold">Starship: Primer Vuelo Comercial</h6>
+              <small>SpaceX &nbsp; <span class="text-success">↗ +190%</span> &nbsp; 9,870 votos</small>
+            </div>
+          </div>
+
+          <div class="list-group-item bg-dark text-light d-flex align-items-center rounded mb-3">
+            <div class="badge bg-purple rounded-pill me-3">#5</div>
+            <div>
+              <h6 class="mb-0 fw-bold">Neuralink: Control Mental Total</h6>
+              <small>Neuralink &nbsp; <span class="text-success">↗ +160%</span> &nbsp; 8,640 votos</small>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Panel destacado derecho -->
+      <div class="col-md-7">
+        <div class="card bg-dark text-light shadow-lg rounded p-4">
+          <div class="bg-gradient rounded-top py-3 px-4 mb-3" style="background: linear-gradient(to right, #bb2fa1, #7a5cff);">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h5 class="fw-bold mb-0">ChatGPT-5 con Razonamiento Avanzado</h5>
+                <small>OpenAI</small>
+              </div>
+              <div class="text-end">
+                <span class="text-white fw-bold">#1</span><br>
+                <small>Inteligencia Artificial</small>
+              </div>
+            </div>
+          </div>
+          <p>IA que puede resolver problemas complejos de matemáticas, ciencia y programación con razonamiento paso a paso.</p>
+          <div class="row text-center my-3">
+            <div class="col">
+              <div class="bg-secondary bg-opacity-25 p-3 rounded">
+                <h5 class="mb-0">15.420</h5>
+                <small>Votos de la Comunidad</small>
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-secondary bg-opacity-25 p-3 rounded">
+                <h5 class="text-success mb-0">+340%</h5>
+                <small>Crecimiento del Interés</small>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#" class="btn btn-gradient btn-lg">Leer Análisis Completo</a>
+            <button class="btn btn-outline-light btn-lg">Compartir Innovación</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="entrevistas py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold text-gradient">Entrevistas Exclusivas</h2>
+      <p class="text-light">Conversaciones profundas con los líderes que están moldeando el futuro de la tecnología</p>
+    </div>
+
+    <div class="row g-4">
+      <!-- Video principal -->
+      <div class="col-lg-8">
+        <div class="card bg-dark text-light shadow-lg rounded">
+          <div class="position-relative">
+            <img src="img/placeholder.svg" class="w-100 rounded-top" alt="Entrevista Sam Altman">
+            <span class="badge bg-danger position-absolute top-0 start-0 m-3">EXCLUSIVA</span>
+            <span class="position-absolute bottom-0 end-0 m-3 bg-secondary text-white px-2 rounded">45 min</span>
+            <button class="btn btn-danger position-absolute top-50 start-50 translate-middle rounded-circle px-4 py-3">
+              <i class="bi bi-play-fill fs-3"></i>
+            </button>
+          </div>
+          <div class="p-4">
+            <h5 class="fw-bold">El Futuro de la IA según Sam Altman</h5>
+            <p>Una conversación profunda sobre el futuro de la inteligencia artificial, los riesgos y oportunidades que presenta para la humanidad.</p>
+            <div class="d-flex flex-wrap gap-3 text-muted mb-3">
+              <small><i class="bi bi-calendar3"></i> 15 Dic 2024</small>
+              <small><i class="bi bi-clock"></i> 45 min</small>
+              <small><i class="bi bi-eye"></i> 2.1M visualizaciones</small>
+            </div>
+            <div class="mb-3">
+              <span class="badge bg-secondary me-2">AGI</span>
+              <span class="badge bg-secondary me-2">Seguridad en IA</span>
+              <span class="badge bg-secondary me-2">Futuro del Trabajo</span>
+              <span class="badge bg-secondary me-2">Ética Tecnológica</span>
+            </div>
+            <div class="d-flex gap-3">
+              <a href="#" class="btn btn-danger px-4">Ver Entrevista Completa</a>
+              <button class="btn btn-outline-light">Descargar Audio</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lista lateral -->
+      <div class="col-lg-4">
+        <div class="card bg-dark text-light p-3">
+          <h6 class="fw-bold mb-4">Más Entrevistas</h6>
+
+          <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-gradient-red text-white rounded mb-2">
+              <small>El Futuro de la IA según Sam Altman</small><br>
+              <small class="text-muted">Sam Altman • OpenAI – 45 min – 2.1M</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-secondary text-white rounded mb-2">
+              <small>Revolución Espacial con Elon Musk</small><br>
+              <small class="text-muted">Elon Musk • SpaceX – 52 min – 3.5M</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-secondary text-white rounded mb-2">
+              <small>Computación Cuántica con Dario Gil</small><br>
+              <small class="text-muted">Dario Gil • IBM – 38 min – 890K</small>
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-secondary text-white rounded mb-2">
+              <small>Biotecnología del Futuro con Jennifer Doudna</small><br>
+              <small class="text-muted">Jennifer Doudna • UC Berkeley – 41 min – 1.2M</small>
+            </a>
+          </div>
+
+          <div class="text-center mt-3">
+            <button class="btn btn-outline-light w-100">Ver Todas las Entrevistas</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- contenido principal -->
+<section class="newsletter-section py-5">
+  <div class="container">
+    <div class="bg-dark text-light p-5 rounded-4 shadow-lg text-center newsletter-box">
+
+      <div class="mb-4">
+        <div class="icon-circle mb-3">
+          <i class="bi bi-envelope-fill fs-2 text-white"></i>
+        </div>
+        <h2 class="fw-bold text-gradient">Mantente al Día con el Futuro</h2>
+        <p class="text-newsletter">
+          Recibe las noticias más revolucionarias sobre tecnología, ciencia e innovación directamente en tu inbox.
+          <span class="text-success">Sin spam</span>, <span class="text-info">solo contenido de calidad</span>.
+        </p>
+      </div>
+
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-8">
+          <div class="d-flex flex-wrap justify-content-center gap-4 text-light fw-bold">
+            <div><span class="text-primary">50K+</span><br>Suscriptores</div>
+            <div><span class="text-warning">3x</span><br>Por semana</div>
+            <div><span class="text-danger">98%</span><br>Satisfacción</div>
+          </div>
+        </div>
+      </div>
+
+      <form class="d-flex justify-content-center mb-4 flex-wrap gap-2">
+        <input type="email" placeholder="tu@email.com" class="form-control w-auto" style="min-width:250px;">
+        <button type="submit" class="btn btn-gradient">Suscribirse</button>
+      </form>
+
+      <div class="row text-center mb-4">
+        <div class="col-md-4">
+          <i class="bi bi-rocket-takeoff-fill fs-2 text-primary"></i>
+          <h6 class="fw-bold mt-2">Noticias Exclusivas</h6>
+          <small class="text-newsletter">Acceso anticipado a las noticias más importantes</small>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-bullseye fs-2 text-danger"></i>
+          <h6 class="fw-bold mt-2">Contenido Curado</h6>
+          <small class="text-newsletter">Solo las noticias más relevantes e impactantes</small>
+        </div>
+        <div class="col-md-4">
+          <i class="bi bi-lightbulb-fill fs-2 text-warning"></i>
+          <h6 class="fw-bold mt-2">Análisis Profundo</h6>
+          <small class="text-newsletter">Insights y análisis de expertos en tecnología</small>
+        </div>
+      </div>
+
+      <hr class="border-secondary">
+
+      <div class="text-center">
+        <h6 class="fw-bold">Síguenos en Redes Sociales</h6>
+        <div class="d-flex justify-content-center gap-4 mt-3 flex-wrap">
+          <div class="social-box">
+            <i class="bi bi-twitter"></i><br><small>Twitter</small><br><span class="text-newsletter">125K</span>
+          </div>
+          <div class="social-box">
+            <i class="bi bi-youtube"></i><br><small>YouTube</small><br><span class="text-newsletter">89K</span>
+          </div>
+          <div class="social-box">
+            <i class="bi bi-linkedin"></i><br><small>LinkedIn</small><br><span class="text-newsletter">67K</span>
+          </div>
+          <div class="social-box">
+            <i class="bi bi-instagram"></i><br><small>Instagram</small><br><span class="text-newsletter">156K</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Pie de página -->
+<!-- ==================== Footer ==================== -->
+<footer class="footer text-light pt-5">
+  <div class="container">
+<div >
+    <!-- Upper section with logo and intro -->
+ <div class="logo-central text-center">
+  <img src="img/imagen7ma.jpg" alt="Logo 7MA TV" class="logo-img mb-2">
+  <div>
+    <h1 class="logo-title">7MA TV</h1>
+    <p class="logo-subtitle">No inventamos la realidad solo la publicamos</p>
+  </div>
+</div>
+
+
+    <!-- Main navigation grid -->
+    <div class="row text-center text-md-start">
+      <div class="col-md-3">
+        <h6 class="fw-bold">Contenido</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Últimas Noticias</a></li>
+          <li><a href="#">Tecnología</a></li>
+          <li><a href="#">Startups</a></li>
+          <li><a href="#">Gadgets</a></li>
+          <li><a href="#">Ciencia</a></li>
+          <li><a href="#">Futuro</a></li>
+          <li><a href="#">Entrevistas</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Recursos</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Informes</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Archivo</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Empresa</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Acerca de</a></li>
+          <li><a href="#">Equipo</a></li>
+          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Prensa</a></li>
+          <li><a href="#">Inversores</a></li>
+          <li><a href="#">Socios</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Legal</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Términos de Uso</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">GDPR</a></li>
+          <li><a href="#">Derechos de Autor</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact Info Boxes -->
+    <div class="row text-center mt-5 mb-3">
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-envelope"></i> contacto@7matv.com</div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-telephone"></i> +1 (555) 123-4567</div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-geo-alt"></i> Calle Arica #130, Nazca, Perú</div>
+      </div>
+    </div>
+
+    <!-- Social icons -->
+    <div class="text-center mb-3">
+      <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+      
+      <a href="reclamos.html">
+      <img src="img/libro_reclamaciones.png" alt="Libro de Reclamaciones" width="100">
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center small mt-3 class=text-newsletter">
+      © 2025 7MA TV. Todos los derechos reservados. Developer - Aldair Gonzales
+    </div>
+
+  
+    
+
+
+
+</footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

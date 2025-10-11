@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Noticias - 7MA TV</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<!--barra de navegacion-->
+  <nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
+      <span>7MA TV</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
+        <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
+        <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+        <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- contenido principal -->
+ <main>
+
+<section class="container py-5">
+  <h3 class="card-title"><a href="Noticias.html">Últimas Noticias de RPP</a></h3>
+
+  <div class="row" id="noticias"></div>
+</section>
+
+<script>
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=https://www.rpp.pe/feed/peru")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("noticias");
+      data.items.slice(0, 6).forEach(item => {
+        fetch(`https://api.microlink.io/?url=${encodeURIComponent(item.link)}`)
+          .then(res => res.json())
+          .then(preview => {
+            const image = preview.data.image?.url && !preview.data.image.url.includes("gstatic")
+              ? preview.data.image.url
+              : "img/imagen1.png";
+
+            const div = document.createElement("div");
+            div.className = "col-md-4 mb-4";
+            div.innerHTML = `
+              <div class="card card-noticia h-100 shadow-sm">
+                <img src="${image}" class="card-img-top" alt="Imagen noticia" style="height: 200px; object-fit: cover;">
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <a href="${item.link}" target="_blank" class="text-decoration-none text-newsletter">${item.title}</a>
+                  </h6>
+                  <p class="card-text"><small class="text-newsletter">${new Date(item.pubDate).toLocaleDateString()}</small></p>
+                </div>
+              </div>`;
+            container.appendChild(div);
+          });
+      });
+    })
+    .catch(err => {
+      document.getElementById("noticias").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias.</p>";
+      console.error("Error cargando noticias:", err);
+    });
+</script>
+
+
+
+</main>
+<!-- ==================== Footer ==================== -->
+<footer class="footer text-light pt-5">
+  <div class="container">
+<div >
+    <!-- Upper section with logo and intro -->
+ <div class="logo-central text-center">
+  <img src="img/imagen7ma.jpg" alt="Logo 7MA TV" class="logo-img mb-2">
+  <div>
+    <h1 class="logo-title">7MA TV</h1>
+    <p class="logo-subtitle">No inventamos la realidad solo la publicamos</p>
+  </div>
+</div>
+
+
+    <!-- Main navigation grid -->
+    <div class="row text-center text-md-start">
+      <div class="col-md-3">
+        <h6 class="fw-bold">Contenido</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Últimas Noticias</a></li>
+          <li><a href="#">Tecnología</a></li>
+          <li><a href="#">Startups</a></li>
+          <li><a href="#">Gadgets</a></li>
+          <li><a href="#">Ciencia</a></li>
+          <li><a href="#">Futuro</a></li>
+          <li><a href="#">Entrevistas</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Recursos</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Newsletter</a></li>
+          <li><a href="#">Podcast</a></li>
+          <li><a href="#">Videos</a></li>
+          <li><a href="#">Informes</a></li>
+          <li><a href="#">Eventos</a></li>
+          <li><a href="#">Webinars</a></li>
+          <li><a href="#">Archivo</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Empresa</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Acerca de</a></li>
+          <li><a href="#">Equipo</a></li>
+          <li><a href="#">Carreras</a></li>
+          <li><a href="#">Contacto</a></li>
+          <li><a href="#">Prensa</a></li>
+          <li><a href="#">Inversores</a></li>
+          <li><a href="#">Socios</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h6 class="fw-bold">Legal</h6>
+        <ul class="list-unstyled">
+          <li><a href="#">Términos de Uso</a></li>
+          <li><a href="#">Política de Privacidad</a></li>
+          <li><a href="#">Cookies</a></li>
+          <li><a href="#">GDPR</a></li>
+          <li><a href="#">Derechos de Autor</a></li>
+          <li><a href="#">Disclaimer</a></li>
+          <li><a href="#">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Contact Info Boxes -->
+    <div class="row text-center mt-5 mb-3">
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-envelope"></i> contacto@7matv.com</div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-telephone"></i> +1 (555) 123-4567</div>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-box"><i class="bi bi-geo-alt"></i> Calle Arica #130, Nazca, Perú</div>
+      </div>
+    </div>
+
+    <!-- Social icons -->
+    <div class="text-center mb-3">
+      <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+      <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+      
+      <a href="reclamos.html">
+      <img src="img/libro_reclamaciones.png" alt="Libro de Reclamaciones" width="100">
+      </a>
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center small mt-3 class=text-newsletter">
+      © 2025 7MA TV. Todos los derechos reservados. Developer - Aldair Gonzales
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
