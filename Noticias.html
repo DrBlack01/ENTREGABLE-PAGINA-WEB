@@ -75,7 +75,7 @@
 <!-- contenido principal -->
  <main>
 <section class="container py-5">
-  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias de la Comunidad</a></h3>
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias 7MA TV Digital</a></h3>
   <div class="row" id="comunidad-noticias"></div>
 </section>
 
@@ -94,6 +94,11 @@
   <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias Internacionales - El País</a></h3>
 
   <div class="row" id="noticias-internacionales"></div>
+</section>
+
+<section class="container py-5">
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias Internacionales - BBC Mundo</a></h3>
+  <div class="row" id="noticias-tecnologia"></div>
 </section>
 
 <script>
@@ -194,6 +199,39 @@
     .catch(err => {
       document.getElementById("noticias-internacionales").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias internacionales.</p>";
       console.error("Error cargando noticias internacionales:", err);
+    });
+
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Ffeeds.bbci.co.uk%2Fmundo%2Ftecnologia%2Frss.xml")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("noticias-tecnologia");
+      data.items.slice(0, 6).forEach(item => {
+        fetch(`https://api.microlink.io/?url=${encodeURIComponent(item.link)}`)
+          .then(res => res.json())
+          .then(preview => {
+            const image = preview.data.image?.url && !preview.data.image.url.includes("gstatic")
+              ? preview.data.image.url
+              : "img/imagen1.png";
+
+            const div = document.createElement("div");
+            div.className = "col-md-4 mb-4";
+            div.innerHTML = `
+              <div class="card card-noticia h-100 shadow-sm">
+                <img src="${image}" class="card-img-top" alt="Imagen noticia">
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <a href="${item.link}" target="_blank" class="text-decoration-none text-newsletter">${item.title}</a>
+                  </h6>
+                  <p class="card-text"><small class="text-newsletter">${new Date(item.pubDate).toLocaleDateString()}</small></p>
+                </div>
+              </div>`;
+            container.appendChild(div);
+          });
+      });
+    })
+    .catch(err => {
+      document.getElementById("noticias-tecnologia").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias de tecnología.</p>";
+      console.error("Error cargando noticias de tecnología:", err);
     });
 </script>
 
