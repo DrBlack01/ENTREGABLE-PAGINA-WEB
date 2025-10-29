@@ -11,10 +11,10 @@
 </head>
 <body>
 
-    <!-- Barra de navegación  -->
+    <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <a class="navbar-brand d-flex align-items-center" href="#">
           <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
           <span>7MA TV</span>
         </a>
@@ -24,24 +24,76 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                      <li class="nav-item"><a class="nav-link" href="comunidad.html">Publicidad 7MA</a></li>
+            <li class="nav-item"><a class="nav-link" href="comunidad.html">Publicidad 7MA</a></li>
             <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
             <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
             <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
             <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
             <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+            <li class="nav-item" id="login-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+            <li class="nav-item dropdown" id="user-menu" style="display: none;">
+              <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <span id="user-initial-icon"></span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
+                <li><a class="dropdown-item" href="cuenta.html">Mi Cuenta</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><button class="dropdown-item" id="logout-button">Cerrar Sesión</button></li>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
     </nav>
+  
+    <!-- Modal de Login -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="login-form">
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Contraseña</label>
+                <input type="password" class="form-control" id="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  
 
 <!-- contenido principal -->
  <main>
 <section class="container py-5">
-  <h3 class="card-title"><a href="Noticias.html">Últimas Noticias de RPP</a></h3>
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias de la Comunidad</a></h3>
+  <div class="row" id="comunidad-noticias"></div>
+</section>
 
+<section class="container py-5">
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Últimas Noticias de RPP</a></h3>
   <div class="row" id="noticias"></div>
+</section>
+
+<section class="container py-5">
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias de Deportes - El País</a></h3>
+
+  <div class="row" id="noticias-deportes"></div>
+</section>
+
+<section class="container py-5">
+  <h3 class="card-title mb-4"><a href="#" class="text-decoration-none text-light">Noticias Internacionales - El País</a></h3>
+
+  <div class="row" id="noticias-internacionales"></div>
 </section>
 
 <script>
@@ -61,7 +113,7 @@
             div.className = "col-md-4 mb-4";
             div.innerHTML = `
               <div class="card card-noticia h-100 shadow-sm">
-                <img src="${image}" class="card-img-top" alt="Imagen noticia" style="height: 200px; object-fit: cover;">
+                <img src="${image}" class="card-img-top" alt="Imagen noticia">
                 <div class="card-body">
                   <h6 class="card-title">
                     <a href="${item.link}" target="_blank" class="text-decoration-none text-newsletter">${item.title}</a>
@@ -74,8 +126,74 @@
       });
     })
     .catch(err => {
-      document.getElementById("noticias").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias.</p>";
-      console.error("Error cargando noticias:", err);
+      document.getElementById("noticias").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias de RPP.</p>";
+      console.error("Error cargando noticias de RPP:", err);
+    });
+
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.elpais.com.uy%2Fformatos%2Frss%2Findex.asp%3Fseccion%3Ddeportes")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("noticias-deportes");
+      data.items.slice(0, 6).forEach(item => {
+        fetch(`https://api.microlink.io/?url=${encodeURIComponent(item.link)}`)
+          .then(res => res.json())
+          .then(preview => {
+            const image = preview.data.image?.url && !preview.data.image.url.includes("gstatic")
+              ? preview.data.image.url
+              : "img/imagen1.png";
+
+            const div = document.createElement("div");
+            div.className = "col-md-4 mb-4";
+            div.innerHTML = `
+              <div class="card card-noticia h-100 shadow-sm">
+                <img src="${image}" class="card-img-top" alt="Imagen noticia">
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <a href="${item.link}" target="_blank" class="text-decoration-none text-newsletter">${item.title}</a>
+                  </h6>
+                  <p class="card-text"><small class="text-newsletter">${new Date(item.pubDate).toLocaleDateString()}</small></p>
+                </div>
+              </div>`;
+            container.appendChild(div);
+          });
+      });
+    })
+    .catch(err => {
+      document.getElementById("noticias-deportes").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias de deportes.</p>";
+      console.error("Error cargando noticias de deportes:", err);
+    });
+
+  fetch("https://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fwww.elpais.com.uy%2Fformatos%2Frss%2Findex.asp%3Fseccion%3Dinternacional")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("noticias-internacionales");
+      data.items.slice(0, 6).forEach(item => {
+        fetch(`https://api.microlink.io/?url=${encodeURIComponent(item.link)}`)
+          .then(res => res.json())
+          .then(preview => {
+            const image = preview.data.image?.url && !preview.data.image.url.includes("gstatic")
+              ? preview.data.image.url
+              : "img/imagen1.png";
+
+            const div = document.createElement("div");
+            div.className = "col-md-4 mb-4";
+            div.innerHTML = `
+              <div class="card card-noticia h-100 shadow-sm">
+                <img src="${image}" class="card-img-top" alt="Imagen noticia">
+                <div class="card-body">
+                  <h6 class="card-title">
+                    <a href="${item.link}" target="_blank" class="text-decoration-none text-newsletter">${item.title}</a>
+                  </h6>
+                  <p class="card-text"><small class="text-newsletter">${new Date(item.pubDate).toLocaleDateString()}</small></p>
+                </div>
+              </div>`;
+            container.appendChild(div);
+          });
+      });
+    })
+    .catch(err => {
+      document.getElementById("noticias-internacionales").innerHTML = "<p class='text-danger'>No se pudieron cargar las noticias internacionales.</p>";
+      console.error("Error cargando noticias internacionales:", err);
     });
 </script>
 
@@ -179,7 +297,11 @@
     </div>
 
 </footer>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="firebase-auth.js"></script>
+<script src="noticias-loader.js"></script>
 </body>
 </html>

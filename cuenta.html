@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Cuenta - 7MA TV</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
+        <span>7MA TV</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
+          <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+          <li class="nav-item" id="login-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+          <li class="nav-item dropdown" id="user-menu" style="display: none;">
+            <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="user-initial-icon"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
+              <li><a class="dropdown-item" href="cuenta.html">Mi Cuenta</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item" id="logout-button">Cerrar Sesión</button></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido de la Página de Cuenta -->
+  <main class="container mt-5 pt-5">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="list-group">
+          <a href="#informacion-personal" class="list-group-item list-group-item-action active">Información Personal</a>
+          <a href="#mis-noticias" class="list-group-item list-group-item-action">Mis Noticias</a>
+          <a href="#mi-publicidad" class="list-group-item list-group-item-action">Mi Publicidad</a>
+          <a href="#preferencias" class="list-group-item list-group-item-action">Preferencias</a>
+        </div>
+      </div>
+      <div class="col-lg-9">
+        <section id="informacion-personal">
+          <h2>Información Personal</h2>
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h5 class="card-title">Mi Perfil</h5>
+              <p>Nombre: <span id="user-name"></span></p>
+              <p>Email: <span id="user-email"></span></p>
+              <button class="btn btn-primary">Editar Perfil</button>
+            </div>
+          </div>
+        </section>
+        <hr class="my-5">
+        <section id="mis-noticias">
+          <h2>Mis Noticias</h2>
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <a href="crear-contenido.html?tipo=noticia" class="btn btn-primary">Crear Nueva Noticia</a>
+            </div>
+          </div>
+        </section>
+        <hr class="my-5">
+        <section id="mi-publicidad">
+          <h2>Mi Publicidad</h2>
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <a href="crear-contenido.html?tipo=publicidad" class="btn btn-primary">Crear Nueva Publicidad</a>
+            </div>
+          </div>
+        </section>
+        <hr class="my-5">
+        <section id="preferencias">
+          <h2>Preferencias</h2>
+          <div class="card bg-dark text-light">
+            <div class="card-body">
+              <h5 class="card-title">Notificaciones</h5>
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="email-notifications" checked>
+                <label class="form-check-label" for="email-notifications">Recibir notificaciones por correo</label>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="firebase-auth.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

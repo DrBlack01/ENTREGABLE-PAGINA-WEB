@@ -496,3 +496,21 @@ label {
   width: 100%;
   position: absolute;
 }
+
+/* =================== MODAL LOGIN =================== */
+.modal-content {
+  background-color: rgba(15, 15, 16, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+#user-initial-icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #7a5cff;
+  color: white;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+}

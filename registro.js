@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const registerForm = document.getElementById('registerForm');
     const registerError = document.getElementById('registerError');
+    const auth = firebase.auth();
 
     registerForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -10,15 +11,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('registerEmail').value;
         const password = document.getElementById('registerPassword').value;
 
-        if (localStorage.getItem(email)) {
-            registerError.textContent = 'El correo electrónico ya está registrado.';
-            return;
-        }
-
-        const user = { name, password };
-        localStorage.setItem(email, JSON.stringify(user));
-
-        alert('¡Registro Exitoso! Ahora puedes iniciar sesión.');
-        window.location.href = 'login.html';
+        auth.createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                // Una vez creado el usuario, actualizamos su perfil para añadir el nombre
+                return userCredential.user.updateProfile({
+                    displayName: name
+                });
+            })
+            .then(() => {
+                // Perfil actualizado, ahora redirigimos
+                alert('¡Registro Exitoso! Serás redirigido a la página principal.');
+                window.location.href = 'index.html';
+            })
+            .catch((error) => {
+                // Manejo de errores
+                console.error("Error en el registro:", error);
+                registerError.textContent = error.message;
+            });
     });
 });

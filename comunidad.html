@@ -12,120 +12,154 @@
 
 <body>
   
-    <!-- Barra de navegación  -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-          <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
-          <span>7MA TV</span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                      <li class="nav-item"><a class="nav-link" href="comunidad.html">Publicidad 7MA</a></li>
-            <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
-            <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
-            <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
-            <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
-            <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
-            <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
-          </ul>
+  <!-- Barra de Navegación -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
+        <span>7MA TV</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="comunidad.html">Publicidad 7MA</a></li>
+          <li class="nav-item"><a class="nav-link" href="Programacion.html">Programación</a></li>
+          <li class="nav-item"><a class="nav-link" href="Noticias.html">Noticias</a></li>
+          <li class="nav-item"><a class="nav-link" href="EnVivo.html">En Vivo</a></li>
+          <li class="nav-item"><a class="nav-link" href="Contacto.html">Contacto</a></li>
+          <li class="nav-item"><a class="nav-link" href="sugerencias.html">Sugerencias</a></li>
+          <li class="nav-item" id="login-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+          <li class="nav-item dropdown" id="user-menu" style="display: none;">
+            <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <span id="user-initial-icon"></span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-dropdown">
+              <li><a class="dropdown-item" href="cuenta.html">Mi Cuenta</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><button class="dropdown-item" id="logout-button">Cerrar Sesión</button></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Modal de Login -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
-    </nav>
-
-<main>
-  <section class="comunidad-page py-5">
-    <div class="container pt-5">
-      <div class="text-center mb-5">
-        <h1 class="display-4 fw-bold text-gradient">Publicidad 7MA</h1>
-        <p class="lead text-light">
-          Apoyamos a los negocios y emprendedores que hacen grande a nuestra región.
-        </p>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-9 col-md-11">
-
-          <!-- Anunciante 1: Desert Club -->
-          <div class="comunidad-fila-card mb-4">
-            <div class="comunidad-fila-img">
-              <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/571358203_1450416573750824_3911191539273338937_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeERUvMEBtN0QGSbrcdMAg8s9tWzGzi2Fq_21bMbOLYWr23z775Sw7eemy-Aa-b0fPMJwR83Agw64yXAaAMZodWe&_nc_ohc=AgrBQ7bolDUQ7kNvwHEbYc7&_nc_oc=Adm3UJPnnW7Cw_4OaLaZI2JHYfwKCCk5lvIUTWpufVBBsijdwjhoyEcqTvabgra1r8s3eQVDZgUVPhqK11ctyaYF&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=kYNrXzjRvVE0dyDvT56KYg&oh=00_AffZ-c-l6w6ot-0NT52VkZaly3o_gkY_Mu-QEYPROUHTXg&oe=69082F27" alt="Publicidad Halloween en Desert Club">
+        <div class="modal-body">
+          <form id="login-form">
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo Electrónico</label>
+              <input type="email" class="form-control" id="email" required>
             </div>
-            <div class="comunidad-fila-body">
-              <h5 class="comunidad-card-title">Desert Club</h5>
-              <p class="comunidad-card-text">
-                ¡Este 31 de octubre llega el HALLOWEEN PRESIDENCIAL! Una fiesta épica con DJs, premios en efectivo y la mejor animación.
-              </p>
-              <a href="https://www.facebook.com/DesertClubN/" target="_blank" class="btn btn-purple">Conseguir Entradas</a>
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña</label>
+              <input type="password" class="form-control" id="password" required>
             </div>
-          </div>
-
-          <!-- Anunciante 2: Concurso Abelardo Hernández -->
-          <div class="comunidad-fila-card mb-4">
-            <div class="comunidad-fila-img">
-              <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/568897976_1443838314408650_3830279394792990294_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEw3o8qFwdrwKsMG3sBhwHrbPW6lv5-XBJs9bqW_n5cEkS79_jKnL8Iw8Yw25RJQo1qaEwZRIZUoppk6Kwj_vQO&_nc_ohc=6U_Cg-tFElgQ7kNvwGfw5jO&_nc_oc=AdkQsmIDAk23oYxPB-VRkv1jVuUe72xCGuPaMUocNmj3SvctevXTnSPSZbWvQ3UgyGh8ElogbciVvpcF427MwwER&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=EaVzf8cu02XCclxZx7XqzA&oh=00_AfcLvrh-snj-mRwevByAexX-mYaCO4y_-A_liCuTRK-KyQ&oe=6908280C" alt="Concurso Escolar Abelardo Hernández">
-            </div>
-            <div class="comunidad-fila-body">
-              <h5 class="comunidad-card-title">Concurso Escolar</h5>
-              <p class="comunidad-card-text">
-                ¡Atención promos de 5to! Abelardo Hernández lanza un gran concurso para promover el turismo de Nasca con increíbles premios.
-              </p>
-              <a href="https://wa.me/51906275200" target="_blank" class="btn btn-purple">Pedir Información</a>
-            </div>
-          </div>
-
-          <!-- Anunciante 3: La Señora Limón -->
-          <div class="comunidad-fila-card mb-4">
-            <div class="comunidad-fila-img">
-              <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/572008678_1451476790311469_4206676238899420105_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHhXIQ7zoZUvEPbRnYmiHF02e0BiSivInbZ7QGJKK8idpyU37rmQMu18txpm9aB9eTgD4xiEKrmcZNVBARrC7oE&_nc_ohc=5r0fE56jttIQ7kNvwGWMLsd&_nc_oc=AdlXHtAxBxjDTnv5lA0Vz6IBk7ALIOrCf7UqdlBcQlqaQfuEyIuhtOWfsvvur3MAH1AoquozF5FATfOuV2_qAblV&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=biM1gQ48Or6BA5q3l-Vrgg&oh=00_AfdZYaX6B8S0KlrdSUKAKUIU2qevFhrvM0C0gMThGJPQHA&oe=69082CC6" alt="Día de la Canción Criolla en La Señora Limón">
-            </div>
-            <div class="comunidad-fila-body">
-              <h5 class="comunidad-card-title">La Señora Limón</h5>
-              <p class="comunidad-card-text">
-                Celebra el Día de la Canción Criolla con música en vivo. Disfruta de guitarras, cajón y un almuerzo inolvidable.
-              </p>
-              <a href="https://wa.me/51982710267" target="_blank" class="btn btn-purple">Reservar Mesa</a>
-            </div>
-          </div>
-
-          <!-- Anunciante 4: Pizza Boulevard -->
-          <div class="comunidad-fila-card mb-4">
-            <div class="comunidad-fila-img">
-              <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/571321333_1451472810311867_7743154285986375315_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEqR3Je7lKzTxm2V5WtXhHdDKK4pvvYXPsMorim-9hc-8btrab8clxe4jKzsDYmcc5YKt8N1et5isPJTTedYJFN&_nc_ohc=etMiINV2nQcQ7kNvwFD-k_a&_nc_oc=Adk4gIy0qlRnSZ8N6PUE-IbhcJGJyXYA1drq2CqZYPEYMTOLo2VT5Ny7wCmVEksaMV8ULXBw1rU1tHRv4Wwqt3Qv&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=YumuuKySn4CEzTK7afJ4Lw&oh=00_AfdsQKs-gy7MzVG8xRBODwe4GQaDTNjEK7A8n4XYNSSMzA&oe=69083A4D" alt="Publicidad de Pizza Boulevard">
-            </div>
-            <div class="comunidad-fila-body">
-              <h5 class="comunidad-card-title">Pizza Boulevard</h5>
-              <p class="comunidad-card-text">
-                ¿Antojo de pizza? ¡Haz tu pedido ya! Atendemos de 8 a.m. a 11 p.m. Visítanos en Av. Bolognesi 751 o pide por delivery.
-              </p>
-              <a href="http://wa.me/51934228469" target="_blank" class="btn btn-purple">Haz tu Pedido</a>
-            </div>
-          </div>
-          
-          <!-- Anunciante 5: El Baúl de Sofi -->
-          <div class="comunidad-fila-card mb-4">
-            <div class="comunidad-fila-img">
-              <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/574322298_1451494053643076_2473602833762472968_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFxCdEN7spkeAhC1Jyr5gknlrKQvFbPsMuWspC8Vs-wy8Jk3fshkUx-VFu6vxnrO-TxI2PduZPGln6m4-h2M_vR&_nc_ohc=cxJU5g2qjV8Q7kNvwHjf5WA&_nc_oc=Adkh3g2cBuOG1KXYOJNWZ_prxanXhIHef1KRIXtI4ir3Xe_mLcVYdpJdX5G04QgyH5bI3UvKM3fzdGXUcNeNQTqs&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=XqSeUVU467wYCv76G32N0w&oh=00_AfcCyZ9BMT7xalX9f8xjVObIJccn0dN_bbJm8rrFxd4SBw&oe=69083DAA" alt="Publicidad de Halloween en El Baúl de Sofi">
-            </div>
-            <div class="comunidad-fila-body">
-              <h5 class="comunidad-card-title">El Baúl de Sofi</h5>
-              <p class="comunidad-card-text">
-                ¡Celebra Halloween con tus peques! Una tarde llena de juegos, manualidades, minichef y un divertido show infantil. ¡Cupos limitados!
-              </p>
-              <a href="https://wa.me/51954453684" target="_blank" class="btn btn-purple">Reservar Cupo</a>
-            </div>
-          </div>
-
+            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+          </form>
         </div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
 
+  <main>
+    <section class="comunidad-page py-5">
+      <div class="container pt-5">
+        <div class="text-center mb-5">
+          <h1 class="display-4 fw-bold text-gradient">Comunidad 7MA</h1>
+          <p class="lead text-light">
+            Apoyamos a los negocios y emprendedores que hacen grande a nuestra región.
+          </p>
+        </div>
+  
+        <div class="row justify-content-center">
+          <div class="col-lg-9 col-md-11">
+  
+            <!-- Anunciante 1: Desert Club -->
+            <div class="comunidad-fila-card mb-4">
+              <div class="comunidad-fila-img">
+                <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/571358203_1450416573750824_3911191539273338937_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeERUvMEBtN0QGSbrcdMAg8s9tWzGzi2Fq_21bMbOLYWr23z775Sw7eemy-Aa-b0fPMJwR83Agw64yXAaAMZodWe&_nc_ohc=AgrBQ7bolDUQ7kNvwHEbYc7&_nc_oc=Adm3UJPnnW7Cw_4OaLaZI2JHYfwKCCk5lvIUTWpufVBBsijdwjhoyEcqTvabgra1r8s3eQVDZgUVPhqK11ctyaYF&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=kYNrXzjRvVE0dyDvT56KYg&oh=00_AffZ-c-l6w6ot-0NT52Vkzaly3o_gkY_Mu-QEYPROUHTXg&oe=69082F27" alt="Publicidad Halloween en Desert Club">
+              </div>
+              <div class="comunidad-fila-body">
+                <h5 class="comunidad-card-title">Desert Club</h5>
+                <p class="comunidad-card-text">
+                  ¡Este 31 de octubre llega el HALLOWEEN PRESIDENCIAL! Una fiesta épica con DJs, premios en efectivo y la mejor animación.
+                </p>
+                <a href="#" class="btn btn-purple">Conseguir Entradas</a>
+              </div>
+            </div>
+  
+            <!-- Anunciante 2: Concurso Abelardo Hernández -->
+            <div class="comunidad-fila-card mb-4">
+              <div class="comunidad-fila-img">
+                <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/568897976_1443838314408650_3830279394792990294_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEw3o8qFwdrwKsMG3sBhwHrbPW6lv5-XBJs9bqW_n5cEkS79_jKnL8Iw8Yw25RJQo1qaEwZRIZUoppk6Kwj_vQO&_nc_ohc=6U_Cg-tFElgQ7kNvwGfw5jO&_nc_oc=AdkQsmIDAk23oYxPB-VRkv1jVuUe72xCGuPaMUocNmj3SvctevXTnSPSZbWvQ3UgyGh8ElogbciVvpcF427MwwER&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=EaVzf8cu02XCclxZx7XqzA&oh=00_AfcLvrh-snj-mRwevByAexX-mYaCO4y_-A_liCuTRK-KyQ&oe=6908280C" alt="Concurso Escolar Abelardo Hernández">
+              </div>
+              <div class="comunidad-fila-body">
+                <h5 class="comunidad-card-title">Concurso Escolar</h5>
+                <p class="comunidad-card-text">
+                  ¡Atención promos de 5to! Abelardo Hernández lanza un gran concurso para promover el turismo de Nasca con increíbles premios.
+                </p>
+                <a href="https://wa.me/51906275200" target="_blank" class="btn btn-purple">Pedir Información</a>
+              </div>
+            </div>
+  
+            <!-- Anunciante 3: La Señora Limón -->
+            <div class="comunidad-fila-card mb-4">
+              <div class="comunidad-fila-img">
+                <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/572008678_1451476790311469_4206676238899420105_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHhXIQ7zoZUvEPbRnYmiHF02e0BiSivInbZ7QGJKK8idpyU37rmQMu18txpm9aB9eTgD4xiEKrmcZNVBARrC7oE&_nc_ohc=5r0fE56jttIQ7kNvwGWMLsd&_nc_oc=AdlXHtAxBxjDTnv5lA0Vz6IBk7ALIOrCf7UqdlBcQlqaQfuEyIuhtOWfsvvur3MAH1AoquozF5FATfOuV2_qAblV&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=biM1gQ48Or6BA5q3l-Vrgg&oh=00_AfdZYaX6B8S0KlrdSUKAKUIU2qevFhrvM0C0gMThGJPQHA&oe=69082CC6" alt="Día de la Canción Criolla en La Señora Limón">
+              </div>
+              <div class="comunidad-fila-body">
+                <h5 class="comunidad-card-title">La Señora Limón</h5>
+                <p class="comunidad-card-text">
+                  Celebra el Día de la Canción Criolla con música en vivo. Disfruta de guitarras, cajón y un almuerzo inolvidable.
+                </p>
+                <a href="https://wa.me/51982710267" target="_blank" class="btn btn-purple">Reservar Mesa</a>
+              </div>
+            </div>
+  
+            <!-- Anunciante 4: Pizza Boulevard -->
+            <div class="comunidad-fila-card mb-4">
+              <div class="comunidad-fila-img">
+                <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/571321333_1451472810311867_7743154285986375315_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeEqR3Je7lKzTxm2V5WtXhHdDKK4pvvYXPsMorim-9hc-8btrab8clxe4jKzsDYmcc5YKt8N1et5isPJTTedYJFN&_nc_ohc=etMiINV2nQcQ7kNvwFD-k_a&_nc_oc=Adk4gIy0qlRnSZ8N6PUE-IbhcJGJyXYA1drq2CqZYPEYMTOLo2VT5Ny7wCmVEksaMV8ULXBw1rU1tHRv4Wwqt3Qv&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=YumuuKySn4CEzTK7afJ4Lw&oh=00_AfdsQKs-gy7MzVG8xRBODwe4GQaDTNjEK7A8n4XYNSSMzA&oe=69083A4D" alt="Publicidad de Pizza Boulevard">
+              </div>
+              <div class="comunidad-fila-body">
+                <h5 class="comunidad-card-title">Pizza Boulevard</h5>
+                <p class="comunidad-card-text">
+                  ¿Antojo de pizza? ¡Haz tu pedido ya! Atendemos de 8 a.m. a 11 p.m. Visítanos en Av. Bolognesi 751 o pide por delivery.
+                </p>
+                <a href="http://wa.me/51934228469" target="_blank" class="btn btn-purple">Haz tu Pedido</a>
+              </div>
+            </div>
+            
+            <!-- Anunciante 5: El Baúl de Sofi -->
+            <div class="comunidad-fila-card mb-4">
+              <div class="comunidad-fila-img">
+                <img src="https://scontent.fpio4-1.fna.fbcdn.net/v/t39.30808-6/574322298_1451494053643076_2473602833762472968_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFxCdEN7spkeAhC1Jyr5gknlrKQvFbPsMuWspC8Vs-wy8Jk3fshkUx-VFu6vxnrO-TxI2PduZPGln6m4-h2M_vR&_nc_ohc=cxJU5g2qjV8Q7kNvwHjf5WA&_nc_oc=Adkh3g2cBuOG1KXYOJNWZ_prxanXhIHef1KRIXtI4ir3Xe_mLcVYdpJdX5G04QgyH5bI3UvKM3fzdGXUcNeNQTqs&_nc_zt=23&_nc_ht=scontent.fpio4-1.fna&_nc_gid=XqSeUVU467wYCv76G32N0w&oh=00_AfcCyZ9BMT7xalX9f8xjVObIJccn0dN_bbJm8rrFxd4SBw&oe=69083DAA" alt="Publicidad de Halloween en El Baúl de Sofi">
+              </div>
+              <div class="comunidad-fila-body">
+                <h5 class="comunidad-card-title">El Baúl de Sofi</h5>
+                <p class="comunidad-card-text">
+                  ¡Celebra Halloween con tus peques! Una tarde llena de juegos, manualidades, minichef y un divertido show infantil. ¡Cupos limitados!
+                </p>
+                <a href="https://wa.me/51954453684" target="_blank" class="btn btn-purple">Reservar Cupo</a>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
 <!-- Pie de página -->
 <!-- ==================== Footer ==================== -->
@@ -230,5 +264,10 @@
 </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firebase-auth.js"></script>
+  <script src="publicidad-loader.js"></script>
 </body>
 </html>
