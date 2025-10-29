@@ -34,7 +34,7 @@ body {
 .cards {
   position: relative;
   width: 390px;
-  height: 354px;
+  height: 354x;
   background-color: #000;
   display: flex;
   flex-direction: column;
@@ -431,8 +431,8 @@ label {
 }
 
 .comunidad-fila-img {
-  flex: 0 0 350px; /* Ancho fijo para la imagen */
-  height: 250px; /* Altura fija para la imagen */
+  flex: 0 0 400px; /* Ancho fijo para la imagen */
+  height: 300px; /* Altura fija para la imagen */
   overflow: hidden;
   border-radius: 12px 0 0 12px;
 }
@@ -476,7 +476,23 @@ label {
   .comunidad-fila-img {
     flex: none;
     width: 100%;
-    height: 250px;
+    height: 300px;
     border-radius: 12px 12px 0 0;
   }
+}
+
+/* Estilos para el video responsivo */
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
