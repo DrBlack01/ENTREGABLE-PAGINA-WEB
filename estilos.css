@@ -345,6 +345,7 @@ img.logo:hover {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 20px;
+  align-self: flex-start;
 }
 .btn-purple:hover {
   opacity: 0.9;
@@ -412,4 +413,70 @@ label {
 .carousel-item img {
   object-fit: cover;
   z-index: 1;
+}
+
+/* Estilos para las tarjetas de anunciantes en Comunidad 7MA */
+.comunidad-fila-card {
+  display: flex;
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.comunidad-fila-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.comunidad-fila-img {
+  flex: 0 0 350px; /* Ancho fijo para la imagen */
+  height: 250px; /* Altura fija para la imagen */
+  overflow: hidden;
+  border-radius: 12px 0 0 12px;
+}
+
+.comunidad-fila-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.comunidad-fila-card:hover .comunidad-fila-img img {
+  transform: scale(1.05);
+}
+
+.comunidad-fila-body {
+  flex: 1;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.comunidad-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.comunidad-card-text {
+  font-size: 0.95rem;
+  color: #b0b0b0;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .comunidad-fila-card {
+    flex-direction: column;
+  }
+  .comunidad-fila-img {
+    flex: none;
+    width: 100%;
+    height: 250px;
+    border-radius: 12px 12px 0 0;
+  }
 }
