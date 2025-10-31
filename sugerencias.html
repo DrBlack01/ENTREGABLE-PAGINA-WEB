@@ -119,6 +119,7 @@
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script src="firebase-config.js"></script>
 <script src="firebase-auth.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -126,76 +127,132 @@
 <!-- Lógica del Formulario de Sugerencias -->
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const sugerenciasForm = document.getElementById("sugerencias-form");
-  const nombreInput = sugerenciasForm.querySelector("input[name='nombre']");
-  const emailInput = sugerenciasForm.querySelector("input[name='email']");
-  const mensajeTextarea = sugerenciasForm.querySelector("textarea[name='mensaje']");
-  const submitButton = sugerenciasForm.querySelector("button[type='submit']");
-  const formDescription = document.querySelector(".p-5 .text-muted");
-  const db = firebase.firestore();
+    const sugerenciasForm = document.getElementById("sugerencias-form");
+    if (!sugerenciasForm) return;
 
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      // Usuario ha iniciado sesión: Habilitar formulario y rellenar datos
-      formDescription.textContent = "Escribe tu sugerencia. Tu correo se adjuntará automáticamente.";
-      emailInput.value = user.email;
-      if (user.displayName) {
-          nombreInput.value = user.displayName;
-      }
-      nombreInput.removeAttribute('disabled');
-      mensajeTextarea.removeAttribute('disabled');
-      submitButton.removeAttribute('disabled');
-    } else {
-      // Nadie ha iniciado sesión: Mantener formulario deshabilitado
-      formDescription.innerHTML = 'Debes <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">iniciar sesión</a> para poder enviar sugerencias.';
+    const nombreInput = sugerenciasForm.querySelector("input[name='nombre']");
+    const emailInput = sugerenciasForm.querySelector("input[name='email']");
+    const mensajeTextarea = sugerenciasForm.querySelector("textarea[name='mensaje']");
+    const submitButton = sugerenciasForm.querySelector("button[type='submit']");
+    const formDescription = document.querySelector(".p-5 .text-muted");
+
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+
+    // --- FUNCIÓN PARA MOSTRAR NOTIFICACIONES TOAST ---
+    function showToast(message, type = 'info') {
+        const toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) return;
+
+        const toastId = 'toast-' + Date.now();
+        let toastHeaderClass = 'bg-primary'; // default
+        if (type === 'success') {
+            toastHeaderClass = 'bg-success';
+        } else if (type === 'danger') {
+            toastHeaderClass = 'bg-danger';
+        } else if (type === 'warning') {
+            toastHeaderClass = 'bg-warning text-dark';
+        }
+
+        const toastHTML = `
+            <div id="${toastId}" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-delay="5000">
+              <div class="toast-header ${toastHeaderClass} text-white">
+                <strong class="me-auto">Notificación</strong>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body">
+                ${message}
+              </div>
+            </div>
+        `;
+
+        toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+
+        const toastElement = document.getElementById(toastId);
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+        
+        toastElement.addEventListener('hidden.bs.toast', () => {
+            toastElement.remove();
+        });
     }
-  });
 
-  sugerenciasForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    
-    const user = firebase.auth().currentUser;
-    if (!user) {
-      alert("Por favor, inicie sesión para enviar una sugerencia.");
-      return;
-    }
+    // --- Configuración de EmailJS ---
+    (function(){
+        emailjs.init('sFgWvRUq_B1fcCWua');
+    })();
 
-    const nombre = nombreInput.value.trim();
-    const mensaje = mensajeTextarea.value.trim();
-    
-    if (!nombre || !mensaje) {
-      alert("Por favor, complete su nombre y el mensaje de la sugerencia.");
-      return;
-    }
-
-    // Deshabilitar botón para prevenir envíos múltiples
-    submitButton.disabled = true;
-    submitButton.textContent = 'Enviando...';
-
-    // Guardar la sugerencia en Firestore
-    db.collection("sugerencias").add({
-        nombre: nombre,
-        email: user.email,
-        mensaje: mensaje,
-        userId: user.uid,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
-        alert("¡Gracias por tu sugerencia! La hemos recibido correctamente.");
-        sugerenciasForm.reset();
-        emailInput.value = user.email; // Restaurar el email después de resetear
-        if(user.displayName) nombreInput.value = user.displayName;
-    })
-    .catch((error) => {
-        console.error("Error al enviar sugerencia: ", error);
-        alert("Ocurrió un error al enviar tu sugerencia. Por favor, inténtalo de nuevo.");
-    })
-    .finally(() => {
-        // Volver a habilitar el botón
-        submitButton.disabled = false;
-        submitButton.textContent = 'Enviar';
+    auth.onAuthStateChanged(function(user) {
+        if (user) {
+            formDescription.textContent = "Escribe tu sugerencia. Tu correo se adjuntará automáticamente.";
+            emailInput.value = user.email;
+            db.collection('users').doc(user.uid).get().then(doc => {
+                if (doc.exists && doc.data().nombre) {
+                    nombreInput.value = doc.data().nombre;
+                }
+            });
+            nombreInput.removeAttribute('disabled');
+            mensajeTextarea.removeAttribute('disabled');
+            submitButton.removeAttribute('disabled');
+        } else {
+            formDescription.innerHTML = 'Debes <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">iniciar sesión</a> para poder enviar sugerencias.';
+            nombreInput.disabled = true;
+            emailInput.disabled = true;
+            mensajeTextarea.disabled = true;
+            submitButton.disabled = true;
+        }
     });
-  });
+
+    sugerenciasForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        
+        const user = auth.currentUser;
+        if (!user) {
+            showToast("Por favor, inicie sesión para enviar una sugerencia.", "warning");
+            return;
+        }
+
+        const nombre = nombreInput.value.trim();
+        const mensaje = mensajeTextarea.value.trim();
+        
+        if (!nombre || !mensaje) {
+            showToast("Por favor, complete su nombre y el mensaje de la sugerencia.", "warning");
+            return;
+        }
+
+        submitButton.disabled = true;
+        submitButton.textContent = 'Enviando...';
+
+        db.collection("sugerencias").add({
+            nombre: nombre,
+            email: user.email,
+            mensaje: mensaje,
+            userId: user.uid,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then((docRef) => {
+            const serviceID = 'service_zql69hu';
+            const templateID = 'template_pmo8myb';
+            const templateParams = { nombre: nombre, mensaje: mensaje };
+
+            emailjs.send(serviceID, templateID, templateParams)
+              .then(function(response) {
+                 showToast("¡Gracias por tu sugerencia! La hemos recibido correctamente.", "success");
+                 sugerenciasForm.reset();
+                 emailInput.value = user.email;
+                 nombreInput.value = nombre;
+              }, function(error) {
+                 showToast("Tu sugerencia FUE GUARDADA, pero ocurrió un error al enviar la notificación por correo.", "danger");
+              });
+        })
+        .catch((error) => {
+            showToast("Ocurrió un error al guardar tu sugerencia. Por favor, inténtalo de nuevo.", "danger");
+        })
+        .finally(() => {
+            submitButton.disabled = false;
+            submitButton.textContent = 'Enviar';
+        });
+    });
 });
 </script>
 
