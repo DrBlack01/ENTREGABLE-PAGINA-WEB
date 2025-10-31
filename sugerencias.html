@@ -9,12 +9,12 @@
   <link rel="stylesheet" href="estilos.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-light">
+<body>
 
     <!-- Barra de Navegación -->
     <nav class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
           <img src="img/imagen7ma.jpg" alt="Logo" width="40" height="40" class="me-2">
           <span>7MA TV</span>
         </a>
@@ -74,8 +74,6 @@
       </div>
     </div>
   
-
-
 <!-- contenido principal -->
   <div class="container  py-5">
     <div class="card shadow-lg rounded-4 overflow-hidden">
@@ -88,11 +86,11 @@
           </div>
           <div class="mb-4">
             <h5><i class="bi bi-telephone-fill"></i> Teléfono</h5>
-            <p>00000<br>0000000</p>
+            <p>923486342</p>
           </div>
           <div>
-            <h5><i class="bi bi-envelope-fill"></i> Correo</h5>
-            <p>7mascreativos@gmail.com<br>7mascreativos@gmail.com</p>
+            <h5><i class="bi bi-envelope-fill"></i> Correo de Contacto</h5>
+            <p>rodrigojy20@gmail.com</p>
           </div>
         </div>
 
@@ -100,161 +98,115 @@
         <div class="col-md-8 p-5">
           <h3 class="text-primary mb-3">Sugerencias</h3>
           <p class="text-muted">Coloque sus sugerencias</p>
-          <form>
+          <form id="sugerencias-form">
             <div class="mb-3">
-              <input type="text"name="nombre" class="form-control" placeholder="Nombre" required>
+              <input type="text" name="nombre" class="form-control" placeholder="Nombre" required disabled>
             </div>
             <div class="mb-3">
-              <input type="email" name="email" class="form-control" placeholder="Email" required>
+              <input type="email" name="email" class="form-control" placeholder="Email (se completa al iniciar sesión)" required readonly disabled>
             </div>
             <div class="mb-3">
-              <textarea class="form-control" name="mensaje" rows="5" placeholder="Escriba su sugerencia..." required></textarea>
+              <textarea class="form-control" name="mensaje" rows="5" placeholder="Escriba su sugerencia..." required disabled></textarea>
             </div>
-            <button type="submit" class="btn btn-primary  px-4" id="btnEnviarSugerencia">Enviar</button>
+            <button type="submit" class="btn btn-primary px-4" disabled>Enviar</button>
           </form>
         </div>
       </div>
     </div>
   </div>
   
-  <script>
-document.getElementById("btnEnviarSugerencia").addEventListener("click", function () {
-  // Obtener valores
-  const nombre = document.querySelector("input[name='nombre']").value.trim();
-  const email = document.querySelector("input[name='email']").value.trim();
-  const mensaje = document.querySelector("textarea[name='mensaje']").value.trim();
-
-  // Validar campos
-  if (!nombre || !email || !mensaje) {
-    alert("Por favor, complete todos los campos antes de enviar su sugerencia.");
-    return;
-  }
-
-  // Validación de correo simple
-  const correoValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!correoValido.test(email)) {
-    alert("Por favor, ingrese un correo electrónico válido.");
-    return;
-  }
-
-  // Si todo está bien
-  alert("¡Gracias por tu sugerencia! La hemos recibido correctamente.");
-  
-  // Opcional: limpiar campos después del envío
-  document.querySelector("input[name='nombre']").value = "";
-  document.querySelector("input[name='email']").value = "";
-  document.querySelector("textarea[name='mensaje']").value = "";
-});
-</script>
-
-
-<!-- Pie de página -->
-<!-- ==================== Footer ==================== -->
-<footer class="footer text-light pt-5">
-  <div class="container">
-<div >
-    <!-- Upper section with logo and intro -->
- <div class="logo-central text-center">
-  <img src="img/imagen7ma.jpg" alt="Logo 7MA TV" class="logo-img mb-2">
-  <div>
-    <h1 class="logo-title">7MA TV</h1>
-    <p class="logo-subtitle">No inventamos la realidad solo la publicamos</p>
-  </div>
-</div>
-
-
-    <!-- Main navigation grid -->
-    <div class="row text-center text-md-start">
-      <div class="col-md-3">
-        <h6 class="fw-bold">Contenido</h6>
-        <ul class="list-unstyled">
-          <li><a href="#">Últimas Noticias</a></li>
-          <li><a href="#">Tecnología</a></li>
-          <li><a href="#">Startups</a></li>
-          <li><a href="#">Gadgets</a></li>
-          <li><a href="#">Ciencia</a></li>
-          <li><a href="#">Futuro</a></li>
-          <li><a href="#">Entrevistas</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h6 class="fw-bold">Recursos</h6>
-        <ul class="list-unstyled">
-          <li><a href="#">Newsletter</a></li>
-          <li><a href="#">Podcast</a></li>
-          <li><a href="#">Videos</a></li>
-          <li><a href="#">Informes</a></li>
-          <li><a href="#">Eventos</a></li>
-          <li><a href="#">Webinars</a></li>
-          <li><a href="#">Archivo</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h6 class="fw-bold">Empresa</h6>
-        <ul class="list-unstyled">
-          <li><a href="#">Acerca de</a></li>
-          <li><a href="#">Equipo</a></li>
-          <li><a href="#">Carreras</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Prensa</a></li>
-          <li><a href="#">Inversores</a></li>
-          <li><a href="#">Socios</a></li>
-        </ul>
-      </div>
-      <div class="col-md-3">
-        <h6 class="fw-bold">Legal</h6>
-        <ul class="list-unstyled">
-          <li><a href="#">Términos de Uso</a></li>
-          <li><a href="#">Política de Privacidad</a></li>
-          <li><a href="#">Cookies</a></li>
-          <li><a href="#">GDPR</a></li>
-          <li><a href="#">Derechos de Autor</a></li>
-          <li><a href="#">Disclaimer</a></li>
-          <li><a href="#">RSS</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Contact Info Boxes -->
-    <div class="row text-center mt-5 mb-3">
-      <div class="col-md-4">
-        <div class="contact-box"><i class="bi bi-envelope"></i> contacto@7matv.com</div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact-box"><i class="bi bi-telephone"></i> +1 (555) 123-4567</div>
-      </div>
-      <div class="col-md-4">
-        <div class="contact-box"><i class="bi bi-geo-alt"></i> Calle Arica #130, Nazca, Perú</div>
-      </div>
-    </div>
-
-    <!-- Social icons -->
-    <div class="text-center mb-3">
-      <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
-      <a href="#" class="social-icon"><i class="bi bi-youtube"></i></a>
-      <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
-      <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
-      
-      <a href="reclamos.html">
-      <img src="img/libro_reclamaciones.png" alt="Libro de Reclamaciones" width="100">
-      </a>
-    </div>
-
-    <!-- Copyright -->
-    <div class="text-center small mt-3 class=text-newsletter">
-      © 2025 7MA TV. Todos los derechos reservados. Developer - Aldair Gonzales
-    </div>
-
-  
-    
-
-
-
-</footer>
+<!-- Scripts de Firebase y Bootstrap -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="firebase-config.js"></script>
 <script src="firebase-auth.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Lógica del Formulario de Sugerencias -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const sugerenciasForm = document.getElementById("sugerencias-form");
+  const nombreInput = sugerenciasForm.querySelector("input[name='nombre']");
+  const emailInput = sugerenciasForm.querySelector("input[name='email']");
+  const mensajeTextarea = sugerenciasForm.querySelector("textarea[name='mensaje']");
+  const submitButton = sugerenciasForm.querySelector("button[type='submit']");
+  const formDescription = document.querySelector(".p-5 .text-muted");
+  const db = firebase.firestore();
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      // Usuario ha iniciado sesión: Habilitar formulario y rellenar datos
+      formDescription.textContent = "Escribe tu sugerencia. Tu correo se adjuntará automáticamente.";
+      emailInput.value = user.email;
+      if (user.displayName) {
+          nombreInput.value = user.displayName;
+      }
+      nombreInput.removeAttribute('disabled');
+      mensajeTextarea.removeAttribute('disabled');
+      submitButton.removeAttribute('disabled');
+    } else {
+      // Nadie ha iniciado sesión: Mantener formulario deshabilitado
+      formDescription.innerHTML = 'Debes <a href="#" data-bs-toggle="modal" data-bs-target="#loginModal">iniciar sesión</a> para poder enviar sugerencias.';
+    }
+  });
+
+  sugerenciasForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    
+    const user = firebase.auth().currentUser;
+    if (!user) {
+      alert("Por favor, inicie sesión para enviar una sugerencia.");
+      return;
+    }
+
+    const nombre = nombreInput.value.trim();
+    const mensaje = mensajeTextarea.value.trim();
+    
+    if (!nombre || !mensaje) {
+      alert("Por favor, complete su nombre y el mensaje de la sugerencia.");
+      return;
+    }
+
+    // Deshabilitar botón para prevenir envíos múltiples
+    submitButton.disabled = true;
+    submitButton.textContent = 'Enviando...';
+
+    // Guardar la sugerencia en Firestore
+    db.collection("sugerencias").add({
+        nombre: nombre,
+        email: user.email,
+        mensaje: mensaje,
+        userId: user.uid,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+        alert("¡Gracias por tu sugerencia! La hemos recibido correctamente.");
+        sugerenciasForm.reset();
+        emailInput.value = user.email; // Restaurar el email después de resetear
+        if(user.displayName) nombreInput.value = user.displayName;
+    })
+    .catch((error) => {
+        console.error("Error al enviar sugerencia: ", error);
+        alert("Ocurrió un error al enviar tu sugerencia. Por favor, inténtalo de nuevo.");
+    })
+    .finally(() => {
+        // Volver a habilitar el botón
+        submitButton.disabled = false;
+        submitButton.textContent = 'Enviar';
+    });
+  });
+});
+</script>
+
+<!-- Pie de página -->
+<footer class="footer text-light pt-5">
+  <div class="container">
+    <div class="text-center small mt-3 text-newsletter">
+      © 2025 7MA TV. Todos los derechos reservados. Developer - Aldair Gonzales
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
